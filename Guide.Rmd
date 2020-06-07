@@ -1,0 +1,18 @@
+---
+title: "Guide"
+output: html_document
+---
+
+### R Guide
+
+# dplyr
+> library dplyr introduces %>%. 
+
+```{r}
+library(dplyr)
+
+PlantGrowth$weight %>%
+  sum()%>%
+  round(1)
+```
+
