@@ -11,21 +11,24 @@ library(EDAWR)
 
 library(tidyr)
 # Main functions:
-# ?gather   -> Make observations from variables
-# ?spread   -> Make variables from observations
+# ?pivot_longer   -> Make observations from variables
+# ?pivot_wider   -> Make variables from observations
 # ?unite    -> unites columns into a single column
 # ?separate -> splits a column by a character string separator
 
 
-# gather() Bsp. mit cases Datenset
+# pivot_longer() Bsp. mit cases Datenset
 head(cases)
-gather(cases, "year", "n", 2:4)
+gather(cases, "year", "n", 2:4) # older version
+cases %>% 
+  pivot_longer(-country, names_to = "year", values_to = "count")
 
 
-# spread() Bsp. mit pollution Datenset
+# pivot_wider Bsp. mit pollution Datenset
 head(pollution)
-spread(pollution, size, amount)
-
+spread(pollution, size, amount) # older version
+pollution %>% 
+  pivot_wider(names_from = size, values_from = amount)
 
 # separate() Bsp. mit storms Datenset
 head(storms)
